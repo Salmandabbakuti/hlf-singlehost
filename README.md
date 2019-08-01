@@ -3,8 +3,9 @@
 ```
 ./generate.sh #Certificates Generation and channel configurations Setup
 ```
-##### 2. Modify CA container with new key generated. in ```docker-compose-kafka.yml```
+##### 2. Modify CA container's ```FABRIC_CA_SERVER_CA_KEYFILE```  with new key generated. Modify in ```deployment/docker-compose-kafka.yml```
 
+**key file can be found in ```crypto-config/peerOrganizations/org1.example.com/ca/``` folder**
 ```
 ca.example.com:
   image: hyperledger/fabric-ca
