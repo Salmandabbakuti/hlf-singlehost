@@ -25,7 +25,7 @@ Before starting network, we must modify Ca key file in ```docker-compose-kafka.y
   image: hyperledger/fabric-ca
   environment: 
     - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-    **- FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config//etc/hyperledger/fabric-ca-server-config/<Key file>**
+    - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config//etc/hyperledger/fabric-ca-server-config/<Key file>
   volumes:
     - ../crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
   container_name: ca.example.com
