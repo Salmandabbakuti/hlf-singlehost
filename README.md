@@ -1,9 +1,9 @@
 # Steps
-
+##### 1. Generate Crypto Matirials 
 ```
 ./generate.sh #Certificates Generation and channel configurations Setup
 ```
-Modify CA container with new key generated. in ```docker-compose-kafka.yml```
+##### 2. Modify CA container with new key generated. in ```docker-compose-kafka.yml```
 
 ```
 ca.example.com:
@@ -15,12 +15,17 @@ ca.example.com:
     - ../crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
   container_name: ca.example.com
   ```
- 
+ ##### 3. Bringing Up Network
  ```
 ./start.sh # Starting Network, Channel creation, Peers Joining channel, Installing and Initiating Chaincode 
+```
+##### 4. Invoking and querying Chaincode from all 3 peers
+
+```
 ./iq.sh   #Invoking and querying Chaincode from all 3 peers
 ```
-#Work flow
+
+# Work flow
 
 #### 1. Generating Crypto matirials and Channel Configurations
 
