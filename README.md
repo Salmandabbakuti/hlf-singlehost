@@ -25,7 +25,7 @@ Before starting network, we must modify Ca key file in ```docker-compose-kafka.y
   image: hyperledger/fabric-ca
   environment: 
     - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-    ```- FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config//etc/hyperledger/fabric-ca-server-config/<Key file>```
+    **- FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config//etc/hyperledger/fabric-ca-server-config/<Key file>**
   volumes:
     - ../crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
   container_name: ca.example.com
@@ -64,14 +64,14 @@ docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/var/h
 docker exec -it cli peer chaincode install -n mycc -p github.com/chaincode -v v0  #installing chaincode on peer 0 via cli
 
 
-```#define connecting peer to peer1 on docker-compose-cli.yaml
-- CORE_PEER_ADDRESS=peer1.org1.example.com:7051```
+#define connecting peer to peer1 on docker-compose-cli.yaml
+- CORE_PEER_ADDRESS=peer1.org1.example.com:7051
 
 # install chaincode 
 docker exec -it cli peer chaincode install -n mycc -p github.com/chaincode -v v0  #installing chaincode on peer 1 via cli
 
-```# define connecting peer to peer2 on docker-compose-cli.yaml
-- CORE_PEER_ADDRESS=peer2.org1.example.com:7051 ```
+# define connecting peer to peer2 on docker-compose-cli.yaml
+- CORE_PEER_ADDRESS=peer2.org1.example.com:7051 
 
 # install chaincode 
 docker exec -it cli peer chaincode install -n mycc -p github.com/chaincode -v v0  #installing chaincode on peer 1 via cli
@@ -85,14 +85,14 @@ docker exec -it cli peer chaincode instantiate -o orderer0.example.com:7050 -C m
 5. Invoking and Querying Chaincode from peers
 
 ```
-```# define connecting peer to your specified peer in docker-compose-cli.yaml 
-- CORE_PEER_ADDRESS=peer0.org1.example.com:7051 in cli container```
+# define connecting peer to your specified peer in docker-compose-cli.yaml 
+- CORE_PEER_ADDRESS=peer0.org1.example.com:7051 in cli container
 
 # invoke chaincode
 docker exec -it cli peer chaincode invoke -o orderer0.example.com:7050 -n mycc -c '{"Args":["set", "a", "20"]}' -C mychannel
 
-```# define conneting peer to specified peerin docker-compose-cli.yaml
-- CORE_PEER_ADDRESS=peer2.org1.example.com:7051```
+# define conneting peer to specified peerin docker-compose-cli.yaml
+- CORE_PEER_ADDRESS=peer2.org1.example.com:7051
 
 # query transaction
 docker exec -it cli peer chaincode query -n mycc -c '{"Args":["query","a"]}' -C mychannel
