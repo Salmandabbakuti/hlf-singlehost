@@ -1,6 +1,28 @@
-# hlf-singlehost
+# Steps
 
-1. Generating Crypto matirials and Channel Configurations
+```
+./generate.sh #Certificates Generation and channel configurations Setup
+```
+Modify CA container with new key generated. in ```docker-compose-kafka.yml```
+
+```
+ca.example.com:
+  image: hyperledger/fabric-ca
+  environment: 
+    - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
+    - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config//etc/hyperledger/fabric-ca-server-config/<Key file>
+  volumes:
+    - ../crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+  container_name: ca.example.com
+  ```
+ 
+ ```
+./start.sh # Starting Network, Channel creation, Peers Joining channel, Installing and Initiating Chaincode 
+./iq.sh   #Invoking and querying Chaincode from all 3 peers
+```
+#Work flow
+
+#### 1. Generating Crypto matirials and Channel Configurations
 
 ```
 git clone https://github.com/Salmandabbakuti/hlf-singlehost.git
@@ -15,7 +37,7 @@ configtxgen -profile OneOrgsChannel -outputCreateChannelTx ./network-config/chan
 configtxgen -profile OneOrgsChannel -outputAnchorPeersUpdate ./network-config/Org1MSPanchors.tx -channelID mychannel -asOrg Org1MSP   #Anchor peer peer generation for org1
 
 ```
-2. Starting Network
+#### 2. Starting Network
 
 Before starting network, we must modify Ca key file in ```docker-compose-kafka.yml```
  like below
@@ -36,7 +58,7 @@ docker-compose -f deployment/docker-compose-cli.yml up -d      #cli Container
 
 ```
 
-3. Creating Channel and Joining Peers
+#### 3. Creating Channel and Joining Peers
 
 ```
 docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@org1.example.com/msp" peer0.org1.example.com peer channel create -o orderer0.example.com:7050 -c mychannel -f /var/hyperledger/configs/channel.tx  #peer0 channel creation
@@ -58,7 +80,7 @@ docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/var/h
 
 docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@org1.example.com/msp" peer2.org1.example.com peer channel join -b mychannel.block   #peer2 joins channel
 ```
-4. Setting up Chaincode
+#### 4. Setting up Chaincode
 
 ```
 docker exec -it cli peer chaincode install -n mycc -p github.com/chaincode -v v0  #installing chaincode on peer 0 via cli
@@ -76,13 +98,13 @@ docker exec -it cli peer chaincode install -n mycc -p github.com/chaincode -v v0
 # install chaincode 
 docker exec -it cli peer chaincode install -n mycc -p github.com/chaincode -v v0  #installing chaincode on peer 1 via cli
 ```
-#### Instantiating Chaincode through channel
+##### Instantiating Chaincode through channel
 
 ```
 docker exec -it cli peer chaincode instantiate -o orderer0.example.com:7050 -C mychannel -n mycc github.com/chaincode -v v0 -c '{"Args": ["a", "100"]}'
 ```
 
-5. Invoking and Querying Chaincode from peers
+#### 5. Invoking and Querying Chaincode from peers
 
 ```
 # define connecting peer to your specified peer in docker-compose-cli.yaml 
