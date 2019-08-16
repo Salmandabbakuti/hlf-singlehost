@@ -15,4 +15,12 @@ configtxgen -profile OneOrgsChannel -outputCreateChannelTx ./network-config/chan
 echo 'Anchor Peer Configurations for Org1 Updating...' 
 configtxgen -profile OneOrgsChannel -outputAnchorPeersUpdate ./network-config/Org1MSPanchors.tx -channelID mychannel -asOrg Org1MSP   #Anchor peer peer generation for org1
 
+echo 'Setting Up your CA Container'
+CURRENT_DIR=$PWD
+cd crypto-config/peerOrganizations/org1.example.com/ca/
+PRIV_KEY=$(ls *_sk)
+cd "$CURRENT_DIR/deployment"
+sed -i "s/CA_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-kafka.yml
+
 echo 'All Done..Bye..'
+exit 1
