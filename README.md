@@ -3,24 +3,12 @@
 ```
 ./generate.sh #Certificates Generation and channel configurations Setup
 ```
-##### 2. Modify CA container's ```FABRIC_CA_SERVER_CA_KEYFILE```  with new key generated. Modify in ```deployment/docker-compose-kafka.yml```
 
-**key file can be found in ```crypto-config/peerOrganizations/org1.example.com/ca/``` folder**
-```
-ca.example.com:
-  image: hyperledger/fabric-ca
-  environment: 
-    - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-    - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config//etc/hyperledger/fabric-ca-server-config/<Key file>
-  volumes:
-    - ../crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
-  container_name: ca.example.com
-  ```
- ##### 3. Bringing Up Network
+ ##### 2. Bringing Up Network
  ```
 ./start.sh # Starting Network, Channel creation, Peers Joining channel, Installing and Initiating Chaincode 
 ```
-##### 4. Invoking and querying Chaincode from all 3 peers
+##### 3. Invoking and querying Chaincode from all 3 peers
 
 ```
 ./iq.sh   #Invoking and querying Chaincode from all 3 peers
