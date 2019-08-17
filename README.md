@@ -35,7 +35,8 @@ configtxgen -profile OneOrgsChannel -outputAnchorPeersUpdate ./network-config/Or
 
 Before starting network, we must modify Ca key file in ```docker-compose-kafka.yml```
  like below
- 
+
+**key file can be found in ```crypto-config/peerOrganizations/org1.example.com/ca/``` folder**
  ```
  ca.example.com:
   image: hyperledger/fabric-ca
