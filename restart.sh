@@ -1,6 +1,6 @@
 echo 'Restarting Network..'
 
-echo 'Re-creating Certificates for network 
+echo 'Re-creating Certificates for network...' 
 
 CURRENT_DIR=$PWD
 cd crypto-config/peerOrganizations/org1.example.com/ca/
