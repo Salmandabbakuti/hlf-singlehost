@@ -342,7 +342,7 @@ services:
           - 9051:7051
           - 9053:7053
 
-  cli:
+    cli:
     container_name: cli
     image: hyperledger/fabric-tools
     tty: true
@@ -365,7 +365,7 @@ services:
     networks:
         - behave
 
-  cli:
+    cli:
     container_name: cli1
     image: hyperledger/fabric-tools
     tty: true
@@ -387,9 +387,8 @@ services:
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
     networks:
         - behave
-    
 
-  cli:
+    cli:
     container_name: cli2
     image: hyperledger/fabric-tools
     tty: true
