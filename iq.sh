@@ -20,7 +20,7 @@ sleep 5
 echo 'Invoking Chaincode From Peer0'
 sudo docker exec -it cli peer chaincode invoke -o orderer0.example.com:7050 -n mycc -c '{"Args":["set", "a", "20"]}' -C mychannel
 sleep 3
-echo 'Querying for Result on Peer0 
+echo 'Querying for Result on Peer0'
 sudo docker exec -it cli peer chaincode query -n mycc -c '{"Args":["query","a"]}' -C mychannel
 
 echo 'Invoking Chaincode From Peer1'
