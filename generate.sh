@@ -11,7 +11,7 @@ sed -i "s/${PRIV_KEY}/CA_PRIVATE_KEY/g" docker-compose-kafka.yml
 cd ..
 rm -rf network-config
 mkdir network-config
-
+rm -rf crypto-config
 
 cryptogen generate --config=./fabric-config/crypto-config.yaml   
 
