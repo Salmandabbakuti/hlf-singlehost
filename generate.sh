@@ -3,6 +3,16 @@ echo 'Generating Crypto Certificates for Network...'
 export PATH=${PWD}/bin:${PWD}:$PATH
 export FABRIC_CFG_PATH=${PWD}/fabric-config
 
+CURRENT_DIR=$PWD
+cd crypto-config/peerOrganizations/org1.example.com/ca/
+PRIV_KEY=$(ls *_sk)
+cd "$CURRENT_DIR/deployment"
+sed -i "s/${PRIV_KEY}/CA_PRIVATE_KEY/g" docker-compose-kafka.yml
+cd ..
+rm -rf network-config
+mkdir network-config
+rm -rf crypto-config
+
 cryptogen generate --config=./fabric-config/crypto-config.yaml   
 
 echo 'Certificates Generated for All Participants and Stored in crypto-config folder...'
