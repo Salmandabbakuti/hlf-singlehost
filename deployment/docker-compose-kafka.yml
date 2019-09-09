@@ -365,7 +365,7 @@ services:
      networks:
         - behave
 
-    cli:
+    cli1:
      container_name: cli1
      image: hyperledger/fabric-tools
      tty: true
@@ -388,7 +388,7 @@ services:
      networks:
         - behave
 
-    cli:
+    cli2:
      container_name: cli2
      image: hyperledger/fabric-tools
      tty: true
