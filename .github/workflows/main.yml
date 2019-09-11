@@ -12,7 +12,6 @@ jobs:
     - name: Run a one-line script
       run: |
         chmod 777 generate.sh
-        ./generate.sh
     - name: Run a multi-line script
       run: |
         chmod 777 start.sh
