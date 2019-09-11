@@ -3,7 +3,7 @@ echo 'Network Restarting....'
 sudo docker-compose -f deployment/docker-compose-kafka.yml up -d
 
 echo 'Network Booting up... Should takes 20 seconds'
-sleep 20
+sleep 30
 
 echo 'Channel Creation Taking Place...'
 
