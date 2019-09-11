@@ -359,9 +359,13 @@ services:
      command: /bin/bash
      volumes:
         - /var/run/:/host/var/run/
+        - ../crypto-config/peerOrganizations/org1.example.com/peers/peer2.org1.example.com/msp:/var/hyperledger/msp
+        - ../crypto-config/peerOrganizations/org1.example.com/peers/peer2.org1.example.com/tls:/var/hyperledger/tls
+        - ../crypto-config/peerOrganizations/org1.example.com/users:/var/hyperledger/users
         - ../chaincode/:/opt/gopath/src/github.com/chaincode
         - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ../network-config/:/var/hyperledger/configs
      networks:
         - behave
 
@@ -382,9 +386,13 @@ services:
      command: /bin/bash
      volumes:
         - /var/run/:/host/var/run/
+        - ../crypto-config/peerOrganizations/org1.example.com/peers/peer2.org1.example.com/msp:/var/hyperledger/msp
+        - ../crypto-config/peerOrganizations/org1.example.com/peers/peer2.org1.example.com/tls:/var/hyperledger/tls
+        - ../crypto-config/peerOrganizations/org1.example.com/users:/var/hyperledger/users
         - ../chaincode/:/opt/gopath/src/github.com/chaincode
         - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ../network-config/:/var/hyperledger/configs
      networks:
         - behave
 
@@ -405,8 +413,12 @@ services:
      command: /bin/bash
      volumes:
          - /var/run/:/host/var/run/
+         - ../crypto-config/peerOrganizations/org1.example.com/peers/peer2.org1.example.com/msp:/var/hyperledger/msp
+         - ../crypto-config/peerOrganizations/org1.example.com/peers/peer2.org1.example.com/tls:/var/hyperledger/tls
+         - ../crypto-config/peerOrganizations/org1.example.com/users:/var/hyperledger/users
          - ../chaincode/:/opt/gopath/src/github.com/chaincode
          - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
          - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+         - ../network-config/:/var/hyperledger/configs
      networks:
          - behave
