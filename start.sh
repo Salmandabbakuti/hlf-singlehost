@@ -7,11 +7,11 @@ sleep 20
 
 echo 'Channel Creation Taking Place...'
 
-sudo docker exec -it cli peer channel create -o orderer0.example.com:7050 -c mychannel -f /var/hyperledger/configs/channel.tx  #peer0 channel creation
+sudo docker exec -i cli peer channel create -o orderer0.example.com:7050 -c mychannel -f /var/hyperledger/configs/channel.tx  #peer0 channel creation
 
 echo 'Channel Creation done..'
 
-sudo docker exec -it cli peer channel join -b mychannel.block    #peer0 joins channel
+sudo docker exec -i cli peer channel join -b mychannel.block    #peer0 joins channel
 
 echo 'Peer0 joinined Channel...'
 
@@ -24,9 +24,9 @@ docker cp mychannel.block cli2:/opt/gopath/src/github.com/hyperledger/fabric/pee
 rm mychannel.block
 
 echo 'Peers Joining Takes place...'
-sudo docker exec -it cli1 peer channel join -b mychannel.block  #peer1 joins channel
+sudo docker exec -i cli1 peer channel join -b mychannel.block  #peer1 joins channel
 echo 'Peer1 Joined Channel Successfully...'
-sudo docker exec -it cli2 peer channel join -b mychannel.block   #peer2 joins channel
+sudo docker exec -i cli2 peer channel join -b mychannel.block   #peer2 joins channel
 
 echo 'Peer2 Joined Succesfully..'
 
