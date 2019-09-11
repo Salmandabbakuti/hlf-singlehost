@@ -13,6 +13,7 @@ jobs:
       run: echo Hello, world!
     - name: Run a multi-line script
       run: |
+        chmod 777 generate.sh
         ./generate.sh
         chmod 777 start.sh
         ./start.sh
