@@ -367,7 +367,10 @@ services:
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ../network-config/:/var/hyperledger/configs
      networks:
-        - behave
+       behave:
+          aliases:
+            - ${CORE_PEER_NETWORKID}
+
 
     cli1:
      container_name: cli1
@@ -391,7 +394,10 @@ services:
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ../network-config/:/var/hyperledger/configs
      networks:
-        - behave
+       behave:
+          aliases:
+            - ${CORE_PEER_NETWORKID}
+
 
     cli2:
      container_name: cli2
@@ -415,4 +421,7 @@ services:
          - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
          - ../network-config/:/var/hyperledger/configs
      networks:
-         - behave
+       behave:
+          aliases:
+            - ${CORE_PEER_NETWORKID}
+
