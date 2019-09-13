@@ -1,3 +1,5 @@
+set -ev
+
 echo 'Network Restarting....'
 
 sudo docker-compose -f deployment/docker-compose-kafka.yml up -d
@@ -7,7 +9,7 @@ sleep 20
 
 echo 'Channel Creation Taking Place...'
 
-sudo docker exec  peer0.org1.example.com peer channel create -o orderer0.example.com:7050 -c mychannel -f /var/hyperledger/configs/channel.tx  #peer0 channel creation
+sudo docker exec peer0.org1.example.com peer channel create -o orderer0.example.com:7050 -c mychannel -f /var/hyperledger/configs/channel.tx  #peer0 channel creation
 
 echo 'Channel Creation done..'
 
