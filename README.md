@@ -6,7 +6,7 @@
 
  ##### 2. Bringing Up Network
  ```
-./start.sh # Starting Network, Channel creation, Peers Joining channel, Installing and Initiating Chaincode 
+./start.sh # Starting Network, Channel creation, Peers Joining channel
 ```
 ##### 3. Invoking and querying Chaincode from all 3 peers
 
