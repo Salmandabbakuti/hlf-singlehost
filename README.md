@@ -1,4 +1,4 @@
-# Steps
+## Steps
 ##### 1. Generate Crypto Matirials 
 ```
 ./generate.sh #Certificates Generation and channel configurations Setup
