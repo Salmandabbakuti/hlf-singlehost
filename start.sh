@@ -1,6 +1,5 @@
-set -ev
-
 echo 'Network Restarting....'
+sudo docker-compose -f deployment/docker-compose-kafka.yml down
 
 sudo docker-compose -f deployment/docker-compose-kafka.yml up -d
 
@@ -18,11 +17,11 @@ sudo docker exec -it peer0.org1.example.com peer channel join -b mychannel.block
 echo 'Peer0 joinined Channel...'
 
 echo 'copying mychannel.block from peer0 to peer1 and peer2'
-# copy mychannel.block to peer1 and peer2
-sudo docker cp peer0.org1.example.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block .
+sudo docker cp peer0.org1.example.com:mychannel.block .
 
-sudo docker cp mychannel.block peer1.org1.example.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block
-sudo docker cp mychannel.block peer2.org1.example.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block
+sudo docker cp mychannel.block peer1.org1.example.com:mychannel.block
+
+sudo docker cp mychannel.block peer2.org1.example.com:mychannel.block
 rm mychannel.block
 
 echo 'Peers Joining Takes place...'
