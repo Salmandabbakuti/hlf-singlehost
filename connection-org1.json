@@ -15,7 +15,9 @@
     "channels": {
         "mychannel": {
             "orderers": [
-                "orderer.example.com"
+                "orderer0.example.com",
+                 "orderer1.example.com",
+                 "orderer2.example.com"
             ],
             "peers": {
                 "peer0.org1.example.com": {},
