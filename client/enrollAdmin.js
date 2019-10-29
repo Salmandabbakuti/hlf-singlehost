@@ -14,7 +14,7 @@ async function main() {
     try {
 
         // Create a new CA client for interacting with the CA.
-        const caInfo = ccp.certificateAuthorities['ca.example.com'];
+        const caInfo = ccp.certificateAuthorities['ca.org1.example.com'];
         const caTLSCACerts =[];
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
