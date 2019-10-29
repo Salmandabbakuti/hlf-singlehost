@@ -5,7 +5,7 @@ let user=process.argv[2];
 const { FileSystemWallet, Gateway, X509WalletMixin } = require('fabric-network');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', 'basic-network', 'connection.json');
+const ccpPath = path.resolve(__dirname, '..', 'connection.json');
 
 async function main() {
     try {
