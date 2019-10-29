@@ -1,11 +1,11 @@
 echo 'Installing chaincode on Peer0'
-sudo docker exec -it cli peer chaincode install -n mycc -v 1.0 -p "/opt/gopath/src/github.com/events" -l "node"
+sudo docker exec -it cli peer chaincode install -n mycc -v 1.0 -p "/opt/gopath/src/github.com/chaincode/events" -l "node"
 sleep 3
 echo 'Installing chaincode on Peer1'
-sudo docker exec -it cli1 peer chaincode install -n mycc -v 1.0 -p "/opt/gopath/src/github.com/events" -l "node"
+sudo docker exec -it cli1 peer chaincode install -n mycc -v 1.0 -p "/opt/gopath/src/github.com/chaincode/events" -l "node"
 sleep 3
 echo 'Installing chaincode on Peer2'
-sudo docker exec -it cli2 peer chaincode install -n mycc -v 1.0 -p "/opt/gopath/src/github.com/events" -l "node"
+sudo docker exec -it cli2 peer chaincode install -n mycc -v 1.0 -p "/opt/gopath/src/github.com/chaincode/events" -l "node"
 
 sleep 5
 echo 'Instantiating chaincode..'
