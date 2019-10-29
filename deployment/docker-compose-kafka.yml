@@ -366,7 +366,6 @@ services:
      volumes:
         - /var/run/:/host/var/run/
         - ../chaincode/:/opt/gopath/src/github.com/chaincode
-        - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ../network-config/:/var/hyperledger/configs
      networks:
@@ -393,7 +392,6 @@ services:
      volumes:
         - /var/run/:/host/var/run/
         - ../chaincode/:/opt/gopath/src/github.com/chaincode
-        - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ../network-config/:/var/hyperledger/configs
      networks:
@@ -420,7 +418,6 @@ services:
      volumes:
          - /var/run/:/host/var/run/
          - ../chaincode/:/opt/gopath/src/github.com/chaincode
-         - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
          - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
          - ../network-config/:/var/hyperledger/configs
      networks:
