@@ -21,6 +21,7 @@ services:
                - ${CORE_PEER_NETWORKID}
 
     peer0.org1.example.com:
+        image: hyperledger/fabric-peer
         environment:
             - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
             - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb01:5984
@@ -43,6 +44,7 @@ services:
                - ${CORE_PEER_NETWORKID}
 
     peer1.org1.example.com:
+        image: hyperledger/fabric-peer
         environment:
             - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
             - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb11:5984
@@ -64,10 +66,11 @@ services:
              aliases:
                - ${CORE_PEER_NETWORKID}
 
-    #peer2.org1.example.com:
-      #  environment:
-         #   - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-         #   - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb21:5984
-        #depends_on:
-         #   - orderer0.example.com
-          #  - couchdb21
+    peer2.org1.example.com:
+        image: hyperledger/fabric-peer
+        environment:
+            - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+            - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb21:5984
+        depends_on:
+            - orderer0.example.com
+            - couchdb21
