@@ -1,5 +1,7 @@
-echo 'Network Restarting....'
+echo 'Network Creation Started..'
 sudo docker-compose -f deployment/docker-compose-kafka.yml down
+sudo docker volume prune
+sudo docker network prune
 
 sudo docker-compose -f deployment/docker-compose-kafka.yml up -d
 
