@@ -28,28 +28,6 @@ services:
             - orderer0.example.com
             - couchdb01
 
-    couchdb02:
-        extends:
-            file: docker-compose-base.yml
-            service: couchdb
-        container_name: couchdb02
-        # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
-        # for example map it to utilize Fauxton User Interface in dev environments.
-        ports:
-          - "6984:5984"
-        networks:
-          behave:
-             aliases:
-               - ${CORE_PEER_NETWORKID}
-
-    peer0.org2.example.com:
-        environment:
-            - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-            - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb02:5984
-        depends_on:
-            - orderer0.example.com
-            - couchdb02
-
     couchdb11:
         extends:
             file: docker-compose-base.yml
@@ -58,7 +36,7 @@ services:
         # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
         # for example map it to utilize Fauxton User Interface in dev environments.
         ports:
-          - "7984:5984"
+          - "6984:5984"
         networks:
           behave:
              aliases:
@@ -72,24 +50,24 @@ services:
             - orderer0.example.com
             - couchdb11
 
-    couchdb12:
+    couchdb21:
         extends:
             file: docker-compose-base.yml
             service: couchdb
-        container_name: couchdb12
+        container_name: couchdb21
         # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
         # for example map it to utilize Fauxton User Interface in dev environments.
         ports:
-          - "8984:5984"
+          - "7984:5984"
         networks:
           behave:
              aliases:
                - ${CORE_PEER_NETWORKID}
 
-    peer1.org2.example.com:
+    peer2.org1.example.com:
         environment:
             - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-            - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb12:5984
+            - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb21:5984
         depends_on:
             - orderer0.example.com
-            - couchdb12
+            - couchdb21
